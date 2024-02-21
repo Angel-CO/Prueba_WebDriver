@@ -8,14 +8,12 @@ def agrego_productos_al_carrito_de_compra(context) :
     for i in range(1,7):
         btn_add_to_card = context.driver.find_element(by=By.XPATH, value='/html/body/div/div/div/div[2]/div/div/div/div[' + str(i) + ']/div[2]/div[2]/button')
         btn_add_to_card.click()
-    time.sleep(5)
 
 @when('Decido quitar los productos del carrito de compra')
 def decido_quitar_los_productos_del_carrito_de_compra(context) :
     for i in range(1,7):
         btn_add_to_card = context.driver.find_element(by=By.XPATH, value='/html/body/div/div/div/div[2]/div/div/div/div[' + str(i) + ']/div[2]/div[2]/button')
         btn_add_to_card.click()
-    time.sleep(5)
 
 @then('Se muestra el carrito de compra vacío')
 def se_muestra_el_carrito_de_compra_vacio(context) :

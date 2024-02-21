@@ -14,7 +14,6 @@ def estoy_en_la_pagina_de_login(context):
 
 @when('Ingreso mis credenciales válidas')
 def ingreso_mis_credenciales_validas(context) :
-    time.sleep(2)
     input_username = context.driver.find_element(by=By.ID, value='user-name')
     input_password = context.driver.find_element(by=By.ID, value='password')
     input_username.send_keys('standard_user')
@@ -24,11 +23,9 @@ def ingreso_mis_credenciales_validas(context) :
 def hago_click_en_el_botón_de_inicio_de_sesion(context) :
     btn_login = context.driver.find_element(by=By.ID, value='login-button')
     btn_login.click()
-    time.sleep(3) 
 
 @then('Se muestra la página principal')
 def se_muestra_la_pagina_principal(context) :
-    time.sleep(2)
     status = context.driver.find_element(by=By.ID, value="page_wrapper").is_displayed()
     url = context.driver.current_url
     assert status
@@ -36,7 +33,6 @@ def se_muestra_la_pagina_principal(context) :
 
 @when('Ingreso mis credenciales inválidas')
 def ingreso_mis_credenciales_invalidas(context) :
-    time.sleep(2)
     input_username = context.driver.find_element(by=By.ID, value='user-name')
     input_password = context.driver.find_element(by=By.ID, value='password')
     input_username.send_keys('locked_out_user')
@@ -44,7 +40,6 @@ def ingreso_mis_credenciales_invalidas(context) :
 
 @then('Aparece un mensaje de error')
 def aparece_un_mensaje_de_error(context):
-    time.sleep(2)
     error_message = context.driver.find_element(by=By.XPATH, value='/html/body/div/div/div[2]/div[1]/div/div/form/div[3]/h3').text
     assert error_message == "Epic sadface: Sorry, this user has been locked out."
 
@@ -54,4 +49,4 @@ def step_cuando(context, user, password) :
     input_password = context.driver.find_element(by=By.ID, value='password')
     input_username.send_keys(user)
     input_password.send_keys(password)
-    time.sleep(3)
+
